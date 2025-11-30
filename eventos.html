@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eventos – CETI Professora Maria de Castro Ribeiro</title>
+
+<style>
+:root{
+    --azul-royal:#0033A0;
+    --azul-profundo:#001A4D;
+    --amarelo-ouro:#FFD700;
+    --preto:#000;
+    --branco:#fff;
+}
+
+/* GERAL */
+body{
+    margin:0;
+    font-family:Poppins, sans-serif;
+    background:var(--amarelo-ouro);
+    color:var(--preto);
+}
+
+/* HEADER */
+header{
+    background:var(--preto);
+    color:var(--branco);
+    padding:15px;
+    text-align:center;
+    border-bottom:4px solid var(--amarelo-ouro);
+}
+header h1{
+    margin:0;
+    font-size:1.6rem;
+    font-weight:700;
+}
+
+/* BOTÃO VOLTAR */
+.voltar{
+    display:inline-block;
+    margin:15px;
+    padding:12px 18px;
+    background:var(--azul-royal);
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:600;
+}
+
+/* SEÇÃO */
+section{
+    padding:20px;
+}
+
+/* CARDS */
+.card{
+    background:var(--branco);
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:25px;
+    border:2px solid var(--azul-royal);
+    box-shadow:0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* TÍTULOS */
+.card h2{
+    margin-top:0;
+    font-size:1.3rem;
+    border-left:5px solid var(--amarelo-ouro);
+    padding-left:10px;
+    color:var(--azul-royal);
+}
+
+/* GALERIA DE FOTOS */
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(120px, 1fr));
+    gap:12px;
+}
+.galeria img{
+    width:100%;
+    border-radius:10px;
+    border:2px solid var(--azul-royal);
+    cursor:pointer;
+    transition:.2s;
+}
+.galeria img:hover{
+    transform:scale(1.05);
+}
+
+/* EVENTOS FUTUROS */
+.evento-futuro{
+    margin-bottom:20px;
+    padding:15px;
+    background:#f6f6f6;
+    border-left:5px solid var(--azul-royal);
+    border-radius:10px;
+}
+.evento-futuro h3{
+    margin:0;
+    color:var(--azul-royal);
+}
+.evento-futuro p{
+    margin:5px 0;
+    line-height:1.4;
+}
+
+/* CRONOGRAMA */
+.cronograma{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-top:10px;
+    border:1px solid var(--azul-royal);
+}
+.cronograma li{
+    margin:6px 0;
+}
+
+/* RESPONSIVO */
+@media (min-width:900px){
+    section{width:70%;margin:auto;}
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Eventos da Escola</h1>
+</header>
+
+<a class="voltar" href="index.html">⬅ Voltar ao início</a>
+
+<section>
+
+    <!-- EVENTOS COM FOTOS -->
+    <div class="card">
+        <h2>📸 Eventos Realizados</h2>
+
+        <p>Acompanhe alguns dos eventos que já aconteceram no CETI Professora Maria de Castro Ribeiro:</p>
+
+        <div class="galeria">
+            <img src="img/evento1.jpg" alt="Evento 1">
+            <img src="img/evento2.jpg" alt="Evento 2">
+           
+        </div>
+    </div>
+
+    <!-- EVENTOS FUTUROS -->
+    <div class="card">
+        <h2>📅 Próximos Eventos</h2>
+
+        <div class="evento-futuro">
+            <h3>Dia "D" da Educação Profissional e Tecnológica – 28/11/2025</h3>
+            <p>Local: Auditório da escola</p>
+            <p>Horário: 08h às 12h</p>
+
+            <div class="cronograma">
+                <h4>📝 Cronograma:</h4>
+                <ul>
+                    <li>08:00 – Abertura e boas-vindas</li>
+                    <li>08:30 – Exposição dos projetos</li>
+                    <li>10:00 – Apresentação dos alunos</li>
+                    <li>12:00 – Encerramento</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="evento-futuro">
+            <h3>Reunião de Pais e Mestres – 05/12</h3>
+            <p>Local: Auditório</p>
+
+            <div class="cronograma">
+                <h4>🎭 Atividades:</h4>
+                <ul>
+                    <li>07:30 – Abertura com apresentações</li>
+                    <li>09:30 – Encerramento</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="evento-futuro">
+            <h3>CONSELHO DE CLASSE – 18 A 19/12</h3>
+            <p>Horário: 08h às 17h</p>
+
+        
+        </div>
+
+    </div>
+
+</section>
+
+<footer style="
+    text-align:center;
+    padding:20px;
+    background:var(--azul-profundo);
+    color:var(--amarelo-ouro);
+    margin-top:40px;
+    border-top:4px solid var(--amarelo-ouro);
+">
+    &copy; 2025 CETI Professora Maria de Castro Ribeiro
+</footer>
+
+</body>
+</html>
+
+
+

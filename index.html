@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CETI - App</title>
+
+<style>
+:root{
+    --azul-royal: #0033A0;
+    --azul-profundo: #001A4D;
+    --amarelo-ouro: #FFD700;
+    --preto: #000;
+    --branco: #fff;
+}
+
+body{
+    margin:0;
+    font-family: Poppins, sans-serif;
+    background: var(--amarelo-ouro);
+    color: var(--preto);
+}
+
+/* Cabeçalho */
+header{
+    background: var(--preto);   /* ✔ alterado para preto */
+    color: var(--branco);
+    padding:15px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    border-bottom:4px solid var(--amarelo-ouro);
+    box-shadow:0 3px 10px rgba(0,0,0,0.35);
+}
+
+/* LOGO CENTRALIZADO */
+header img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:white;
+    border:3px solid var(--amarelo-ouro);
+}
+
+header h1{
+    font-size:1.8rem;     /* ✔ Aumentado */
+    text-align:center;    /* ✔ Centralizado */
+    margin:0;
+    font-weight:700;
+}
+
+/* Menu lateral */
+.menu-btn{
+    font-size:32px;
+    cursor:pointer;
+    position:absolute;
+    right:20px;
+    top:20px;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    left:-260px;
+    width:260px;
+    height:100vh;
+    background: var(--azul-profundo);
+    transition:.3s;
+    padding-top:60px;
+    box-shadow:4px 0 10px rgba(0,0,0,0.4);
+}
+nav.show{
+    left:0;
+}
+nav a{
+    display:block;
+    padding:18px;
+    margin:5px 0;
+    text-decoration:none;
+    color:var(--amarelo-ouro);
+    font-weight:bold;
+    font-size:1.05rem;
+    border-left:4px solid transparent;
+    transition:.2s;
+}
+nav a:hover{
+    background:#002464;
+    border-left:4px solid var(--amarelo-ouro);
+}
+
+/* Cartões */
+section{
+    padding:20px;
+}
+
+.card{
+    background: var(--branco);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    border:2px solid var(--azul-royal);
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+.card h2{
+    margin-top:0;
+    font-size:1.3rem;
+    color:var(--azul-royal);
+    border-left:5px solid var(--amarelo-ouro);
+    padding-left:10px;
+}
+
+/* Menus principais da tela inicial */
+.menu-principal{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu-link{
+    display:block;
+    background:var(--azul-royal);
+    color:white;
+    text-decoration:none;
+    padding:15px;
+    border-radius:14px;
+    text-align:center;
+    font-size:1.1rem;
+    font-weight:600;
+    box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    transition:.2s;
+}
+.menu-link:hover{
+    background:#0044cc;
+    transform:scale(1.03);
+}
+
+/* Rodapé */
+footer{
+    text-align:center;
+    padding:20px;
+    background:var(--azul-profundo);
+    color:var(--amarelo-ouro);
+    margin-top:30px;
+    border-top:4px solid var(--amarelo-ouro);
+}
+</style>
+
+<script>
+function toggleMenu(){
+    document.querySelector("nav").classList.toggle("show");
+}
+</script>
+</head>
+
+<body>
+
+<header>
+    <img src="logo_CETI.jpeg" alt="Logo do CETI">  <!-- ✔ Logo Centralizado -->
+    <h1>CETI Professora Maria de Castro Ribeiro</h1>
+    <span class="menu-btn" onclick="toggleMenu()">☰</span>
+</header>
+
+<!-- Menu lateral -->
+<nav>
+    <a href="cardapio.html" onclick="toggleMenu()">🍽️ Cardápio</a>
+    <a href="cursos.html" onclick="toggleMenu()">📘 Cursos</a>
+    <a href="eventos.html" onclick="toggleMenu()">🎉 Eventos</a>
+</nav>
+
+<section>
+
+<div class="card">
+    <h2>Bem vindo ao CETI Professora Maria de Castro Ribeiro</h2>
+
+    <p>
+        O CETI Professora Maria de Castro Ribeiro é uma instituição de ensino comprometida 
+        com a formação integral dos estudantes, promovendo educação de qualidade, 
+        desenvolvimento humano, práticas inovadoras e participação ativa da comunidade. 
+        Surgiu com a missão de transformar vidas por meio do conhecimento e hoje é referência 
+        regional em excelência pedagógica e participação estudantil.
+    </p>
+</div>
+
+<!-- 3 botões principais -->
+<div class="menu-principal">
+
+    <a class="menu-link" href="cursos.html">📘 Cursos Ofertados</a>
+
+    <a class="menu-link" href="cardapio.html">🍽️ Cardápio Alimentar</a>
+
+    <a class="menu-link" href="eventos.html">🎉 Eventos da Escola</a>
+
+</div>
+
+</section>
+
+<footer>
+    &copy; 2025 CETI Professora Maria de Castro Ribeiro | Desenvolvido pela Turma TDS "A" sob orientação do Prof. Cristiano
+</footer>
+
+</body>
+</html>

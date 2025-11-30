@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardápio Integral - CETI Professora Maria de Castro Ribeiro</title>
+<style>
+    :root {
+        --cor-fundo: #f8f9fb;
+        --cor-card: #fff;
+        --cor-destaque: #FFD700;
+        --cor-texto: #333;
+        --cor-secundaria: #0e0e0e;
+        --cor-borda-item: #000000;
+        --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background-color: var(--cor-fundo);
+        color: var(--cor-texto);
+        transition: background 0.3s ease;
+    }
+
+    header {
+        background-color: var(--cor-destaque);
+        color: rgb(0, 0, 0);
+        text-align: center;
+        padding: 30px 10px;
+        border-bottom: 4px solid #000000;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.1em;
+        letter-spacing: 1px;
+    }
+
+    header p {
+        margin-top: 8px;
+        font-style: italic;
+        opacity: 0.9;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: var(--cor-card);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: var(--sombra-suave);
+    }
+
+    h2 {
+        color: var(--cor-secundaria);
+        text-align: center;
+        font-size: 1.6em;
+        margin-top: 0;
+        border-bottom: 2px solid var(--cor-destaque);
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .dia-semana {
+        margin-bottom: 25px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: var(--sombra-suave);
+        background-color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .dia-semana:hover {
+        transform: scale(1.01);
+    }
+
+    .titulo-dia {
+        background-color: var(--cor-destaque);
+        color: rgb(255, 254, 254);
+        padding: 15px 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 1.3em;
+        user-select: none;
+        transition: background 0.3s ease;
+    }
+
+    .titulo-dia:hover {
+        background-color: #000000;
+    }
+
+    .icone {
+        transition: transform 0.3s ease;
+    }
+
+    .dia-semana.ativo .icone {
+        transform: rotate(90deg);
+    }
+
+    .conteudo {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        background-color: #ffffff;
+        padding: 0 20px;
+    }
+
+    .dia-semana.ativo .conteudo {
+        max-height: 500px;
+        padding: 15px 20px 20px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 12px 15px;
+        border-radius: 6px;
+        border-left: 5px solid var(--cor-borda-item);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    li:hover {
+        background: #eef5ff;
+        transform: translateX(4px);
+    }
+
+    .horario {
+        font-weight: bold;
+        color: var(--cor-secundaria);
+        margin-right: 8px;
+    }
+
+    .info-geral {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.95em;
+        color: #555;
+        font-style: italic;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: var(--cor-destaque);
+        color: white;
+        font-size: 0.9em;
+        margin-top: 30px;
+    }
+
+    /* Botão modo noturno */
+    .toggle-tema {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border: 2px solid var(--cor-destaque);
+        color: var(--cor-destaque);
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: var(--sombra-suave);
+        transition: all 0.3s ease;
+    }
+
+    .toggle-tema:hover {
+        background: var(--cor-destaque);
+        color: white;
+    }
+
+    body.dark {
+        --cor-fundo: #0e0e14;
+        --cor-card: #161625;
+        --cor-texto: #e2e2e2;
+        --cor-secundaria: #f5f5f5;
+        --cor-destaque: #4463ff;
+        --cor-borda-item: #00aaff;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Cardápio do Tempo Integral</h1>
+    <p>CETI Professora Maria de Castro Ribeiro</p>
+</header>
+
+<div class="container">
+    <h2>Semana Escolar</h2>
+
+    <!-- Segunda -->
+    <div class="dia-semana">
+        <div class="titulo-dia">Segunda-feira <span class="icone">▶</span></div>
+        <div class="conteudo">
+            <ul>
+                <li><span class="horario">Café da Manhã (09:30):</span> Pão com carne moída e suco de manga.</li>
+                <li><span class="horario">Almoço (11:50):</span> Arroz, feijão, picadinho de carne com macaxeira e abóbora (fruta: melancia).</li>
+                <li><span class="horario">Lanche da Tarde (14:50):</span> Torta de carne e suco de goiaba.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Terça -->
+    <div class="dia-semana">
+        <div class="titulo-dia">Terça-feira <span class="icone">▶</span></div>
+        <div class="conteudo">
+            <ul>
+                <li><span class="horario">Café da Manhã (09:30):</span> Farofa de cuscuz com ovo, mamão e café com leite.</li>
+                <li><span class="horario">Almoço (11:50):</span> Arroz, feijão de arranca, frango assado e salada cozida (beterraba e batata doce).</li>
+                <li><span class="horario">Lanche da Tarde (14:50):</span> Salada de fruta (manga, laranja, banana, melão, leite).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quarta -->
+    <div class="dia-semana">
+        <div class="titulo-dia">Quarta-feira <span class="icone">▶</span></div>
+        <div class="conteudo">
+            <ul>
+                <li><span class="horario">Café da Manhã (09:30):</span> Pão, fruta (melancia) e vitamina de banana.</li>
+                <li><span class="horario">Almoço (11:50):</span> Arroz, carne de porco de panela acebolada/frango ao molho, macarrão, feijão e salada (manga, repolho, cenoura).</li>
+                <li><span class="horario">Lanche da Tarde (14:50):</span> Farofa de cuscuz com carne moída e suco de goiaba.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Quinta -->
+    <div class="dia-semana">
+        <div class="titulo-dia">Quinta-feira <span class="icone">▶</span></div>
+        <div class="conteudo">
+            <ul>
+                <li><span class="horario">Café da Manhã (09:30):</span> Farofa de cuscuz com frango e suco de acerola.</li>
+                <li><span class="horario">Almoço (11:50):</span> Arroz, estrogonofe de frango, feijão, salada (tomate, alface) e fruta (melancia).</li>
+                <li><span class="horario">Lanche da Tarde (14:50):</span> Pão com frango e cenoura e suco de caju.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sexta -->
+    <div class="dia-semana">
+        <div class="titulo-dia">Sexta-feira <span class="icone">▶</span></div>
+        <div class="conteudo">
+            <ul>
+                <li><span class="horario">Café da Manhã (09:50):</span> Caldo de macaxeira e torrada.</li>
+                <li><span class="horario">Almoço (11:50):</span> Arroz, feijoada, farofa de cenoura, vinagrete e fruta (laranja).</li>
+                <li><span class="horario">Lanche da Tarde (14:50):</span> Frutas (melancia, banana e goiaba).</li>
+            </ul>
+        </div>
+    </div>
+
+    <p class="info-geral">
+        Este cardápio é uma sugestão e pode sofrer alterações conforme a disponibilidade dos alimentos e dos recursos PNAE (Programa Nacional de Alimentação Escolar), e as necessidades nutricionais.
+    </p>
+</div>
+
+<footer>
+    © 2025 CETI Professora Maria de Castro Ribeiro | Desenvolvido pela Turma TDS "A" sob orientação do Prof. Cristiano.
+</footer>
+
+<script>
+    // Expandir/colapsar dias da semana
+    document.querySelectorAll(".titulo-dia").forEach(titulo => {
+        titulo.addEventListener("click", () => {
+            const dia = titulo.parentElement;
+            dia.classList.toggle("ativo");
+        });
+    });
+
+</script>
+
+</body>
+</html>
