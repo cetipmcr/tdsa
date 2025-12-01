@@ -63,7 +63,7 @@ header h1{
 }
 
 /* ============================= */
-/* BOTÃO DO MENU (HAMBURGER) */
+/* BOTÃO DO MENU */
 /* ============================= */
 .menu-btn{
     font-size:32px;
@@ -74,14 +74,14 @@ header h1{
     z-index:2001;
     color: var(--branco);
     user-select:none;
-    transition:0.2s;
+    transition:.2s ease;
 }
-.menu-btn:active{
-    transform:scale(0.95);
+.menu-btn:hover{
+    transform:scale(1.08);
 }
 
 /* ============================= */
-/* OVERLAY ESCURECIDO */
+/* OVERLAY */
 /* ============================= */
 #overlay{
     position:fixed;
@@ -93,7 +93,7 @@ header h1{
     backdrop-filter: blur(2px);
     opacity:0;
     pointer-events:none;
-    transition:opacity .2s ease-in-out;
+    transition:opacity .3s ease-in-out;
     z-index:1500;
 }
 #overlay.show{
@@ -102,22 +102,27 @@ header h1{
 }
 
 /* ============================= */
-/* MENU LATERAL */
+/* MENU LATERAL MODERNO */
 /* ============================= */
 nav{
     position:fixed;
     top:0;
-    left:-260px;
+    left:-280px;
     width:260px;
     height:100vh;
     background: var(--azul-profundo);
     padding-top:80px;
     box-shadow:4px 0 15px rgba(0,0,0,0.4);
-    transition:left .18s ease-out; /* slide rápido */
+    transition:left .22s cubic-bezier(.45, .03, .52, .96);
     z-index:2002;
+
+    transform:scale(.92);
+    opacity:0;
 }
 nav.show{
     left:0;
+    transform:scale(1);
+    opacity:1;
 }
 
 nav a{
@@ -129,11 +134,12 @@ nav a{
     font-weight:600;
     font-size:1.1rem;
     border-left:4px solid transparent;
-    transition:0.2s;
+    transition:0.25s ease;
 }
 nav a:hover{
     background:#002464;
     border-left:4px solid var(--amarelo-ouro);
+    transform:translateX(4px);
 }
 
 /* ============================= */
@@ -143,6 +149,9 @@ section{
     padding:20px;
 }
 
+/* ============================= */
+/* ANIMAÇÃO DOS CARDS */
+/* ============================= */
 .card{
     background: var(--branco);
     border-radius:18px;
@@ -150,7 +159,22 @@ section{
     margin-bottom:20px;
     border:2px solid var(--azul-royal);
     box-shadow:0 4px 10px rgba(0,0,0,0.25);
+
+    /* animação inicial */
+    opacity:0;
+    transform:translateY(25px);
+    animation:cardFadeUp .7s ease forwards;
 }
+@keyframes cardFadeUp {
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.card:nth-child(1){ animation-delay:.1s; }
+.card:nth-child(2){ animation-delay:.25s; }
+.card:nth-child(3){ animation-delay:.4s; }
 
 .card h2{
     margin-top:0;
@@ -161,7 +185,7 @@ section{
 }
 
 /* ============================= */
-/* MENU PRINCIPAL (TRÊS BOTÕES) */
+/* BOTÕES PRINCIPAIS */
 /* ============================= */
 .menu-principal{
     display:flex;
@@ -181,9 +205,14 @@ section{
     font-weight:600;
     box-shadow:0 3px 8px rgba(0,0,0,0.3);
     transition:.2s;
+
+    /* animação */
+    opacity:0;
+    transform:translateY(30px);
+    animation:cardFadeUp .7s ease forwards;
 }
 .menu-link:hover{
-    transform:scale(1.04);
+    transform:scale(1.05);
     background:#003fc9;
 }
 
@@ -199,9 +228,9 @@ footer{
     border-top:4px solid var(--amarelo-ouro);
 }
 
-/* ================================== */
+/* ============================= */
 /* RESPONSIVIDADE */
-/* ================================== */
+/* ============================= */
 @media (max-width:480px){
     header h1{
         font-size:1.35rem;
@@ -246,7 +275,7 @@ function closeMenu(){
     <h1>CETI Professora Maria de Castro Ribeiro</h1>
 </header>
 
-<!-- MENU LATERAL OVERLAY -->
+<!-- MENU LATERAL -->
 <nav>
     <a href="cardapio.html" onclick="closeMenu()">🍽️ Cardápio</a>
     <a href="cursos.html" onclick="closeMenu()">📘 Cursos</a>
@@ -276,7 +305,7 @@ function closeMenu(){
 </section>
 
 <footer>
-    &copy; 2025 CETI Professora Maria de Castro Ribeiro | Desenvolvido pela Turma TDS "A" sob orientação do Prof. Cristiano
+    &copy; 2025 CETI Professora Maria de Castro Ribeiro | Desenvolvido pela Turma TDS "A" com apoio do Prof Cristiano
 </footer>
 
 </body>
