@@ -24,7 +24,7 @@ body{
 
 /* Cabeçalho */
 header{
-    background: var(--preto);   /* ✔ alterado para preto */
+    background: var(--preto); 
     color: var(--branco);
     padding:15px 20px;
     display:flex;
@@ -39,7 +39,7 @@ header{
     box-shadow:0 3px 10px rgba(0,0,0,0.35);
 }
 
-/* LOGO CENTRALIZADO */
+/* LOGO */
 header img{
     width:80px;
     height:80px;
@@ -49,21 +49,24 @@ header img{
 }
 
 header h1{
-    font-size:1.8rem;     /* ✔ Aumentado */
-    text-align:center;    /* ✔ Centralizado */
+    font-size:1.8rem;
+    text-align:center;
     margin:0;
     font-weight:700;
 }
 
-/* Menu lateral */
+/* Botão do menu corrigido */
 .menu-btn{
     font-size:32px;
     cursor:pointer;
-    position:absolute;
+    position:fixed;
     right:20px;
     top:20px;
+    z-index:2000;
+    color: var(--branco);
 }
 
+/* Menu lateral */
 nav{
     position:fixed;
     top:0;
@@ -94,7 +97,7 @@ nav a:hover{
     border-left:4px solid var(--amarelo-ouro);
 }
 
-/* Cartões */
+/* Conteúdo */
 section{
     padding:20px;
 }
@@ -161,10 +164,12 @@ function toggleMenu(){
 
 <body>
 
+<!-- Botão do menu AGORA FORA do header -->
+<span class="menu-btn" onclick="toggleMenu()">☰</span>
+
 <header>
-    <img src="logo_CETI.jpeg" alt="Logo do CETI">  <!-- ✔ Logo Centralizado -->
+    <img src="logo_CETI.jpeg" alt="Logo do CETI">
     <h1>CETI Professora Maria de Castro Ribeiro</h1>
-    <span class="menu-btn" onclick="toggleMenu()">☰</span>
 </header>
 
 <!-- Menu lateral -->
