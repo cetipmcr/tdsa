@@ -7,6 +7,9 @@
 <title>CETI - App</title>
 
 <style>
+/* ============================= */
+/* VARIÁVEIS DE COR */
+/* ============================= */
 :root{
     --azul-royal: #0033A0;
     --azul-profundo: #001A4D;
@@ -15,18 +18,24 @@
     --branco: #fff;
 }
 
+/* ============================= */
+/* RESET / ESTRUTURA */
+/* ============================= */
 body{
     margin:0;
     font-family: Poppins, sans-serif;
     background: var(--amarelo-ouro);
     color: var(--preto);
+    overflow-x:hidden;
 }
 
-/* Cabeçalho */
+/* ============================= */
+/* HEADER */
+/* ============================= */
 header{
-    background: var(--preto); 
+    background: var(--preto);
     color: var(--branco);
-    padding:15px 20px;
+    padding:15px 20px 25px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -39,7 +48,6 @@ header{
     box-shadow:0 3px 10px rgba(0,0,0,0.35);
 }
 
-/* LOGO */
 header img{
     width:80px;
     height:80px;
@@ -49,24 +57,53 @@ header img{
 }
 
 header h1{
-    font-size:1.8rem;
+    font-size:1.7rem;
     text-align:center;
     margin:0;
-    font-weight:700;
 }
 
-/* Botão do menu corrigido */
+/* ============================= */
+/* BOTÃO DO MENU (HAMBURGER) */
+/* ============================= */
 .menu-btn{
     font-size:32px;
     cursor:pointer;
     position:fixed;
     right:20px;
-    top:20px;
-    z-index:2000;
+    top:18px;
+    z-index:2001;
     color: var(--branco);
+    user-select:none;
+    transition:0.2s;
+}
+.menu-btn:active{
+    transform:scale(0.95);
 }
 
-/* Menu lateral */
+/* ============================= */
+/* OVERLAY ESCURECIDO */
+/* ============================= */
+#overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter: blur(2px);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease-in-out;
+    z-index:1500;
+}
+#overlay.show{
+    opacity:1;
+    pointer-events:all;
+}
+
+/* ============================= */
+/* MENU LATERAL */
+/* ============================= */
 nav{
     position:fixed;
     top:0;
@@ -74,37 +111,41 @@ nav{
     width:260px;
     height:100vh;
     background: var(--azul-profundo);
-    transition:.3s;
-    padding-top:60px;
-    box-shadow:4px 0 10px rgba(0,0,0,0.4);
+    padding-top:80px;
+    box-shadow:4px 0 15px rgba(0,0,0,0.4);
+    transition:left .18s ease-out; /* slide rápido */
+    z-index:2002;
 }
 nav.show{
     left:0;
 }
+
 nav a{
     display:block;
     padding:18px;
     margin:5px 0;
     text-decoration:none;
     color:var(--amarelo-ouro);
-    font-weight:bold;
-    font-size:1.05rem;
+    font-weight:600;
+    font-size:1.1rem;
     border-left:4px solid transparent;
-    transition:.2s;
+    transition:0.2s;
 }
 nav a:hover{
     background:#002464;
     border-left:4px solid var(--amarelo-ouro);
 }
 
-/* Conteúdo */
+/* ============================= */
+/* CONTEÚDO */
+/* ============================= */
 section{
     padding:20px;
 }
 
 .card{
     background: var(--branco);
-    border-radius:20px;
+    border-radius:18px;
     padding:20px;
     margin-bottom:20px;
     border:2px solid var(--azul-royal);
@@ -119,7 +160,9 @@ section{
     padding-left:10px;
 }
 
-/* Menus principais da tela inicial */
+/* ============================= */
+/* MENU PRINCIPAL (TRÊS BOTÕES) */
+/* ============================= */
 .menu-principal{
     display:flex;
     flex-direction:column;
@@ -130,21 +173,23 @@ section{
     display:block;
     background:var(--azul-royal);
     color:white;
-    text-decoration:none;
     padding:15px;
-    border-radius:14px;
     text-align:center;
-    font-size:1.1rem;
+    border-radius:14px;
+    text-decoration:none;
+    font-size:1.15rem;
     font-weight:600;
     box-shadow:0 3px 8px rgba(0,0,0,0.3);
     transition:.2s;
 }
 .menu-link:hover{
-    background:#0044cc;
-    transform:scale(1.03);
+    transform:scale(1.04);
+    background:#003fc9;
 }
 
-/* Rodapé */
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
 footer{
     text-align:center;
     padding:20px;
@@ -153,53 +198,77 @@ footer{
     margin-top:30px;
     border-top:4px solid var(--amarelo-ouro);
 }
+
+/* ================================== */
+/* RESPONSIVIDADE */
+/* ================================== */
+@media (max-width:480px){
+    header h1{
+        font-size:1.35rem;
+    }
+    header img{
+        width:65px;
+        height:65px;
+    }
+    .menu-link{
+        font-size:1rem;
+    }
+}
 </style>
 
 <script>
 function toggleMenu(){
-    document.querySelector("nav").classList.toggle("show");
+    const nav = document.querySelector("nav");
+    const overlay = document.getElementById("overlay");
+    
+    nav.classList.toggle("show");
+    overlay.classList.toggle("show");
+}
+
+function closeMenu(){
+    document.querySelector("nav").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
 }
 </script>
-</head>
 
+</head>
 <body>
 
-<!-- Botão do menu AGORA FORA do header -->
+<!-- Botão do menu -->
 <span class="menu-btn" onclick="toggleMenu()">☰</span>
 
+<!-- Overlay escuro -->
+<div id="overlay" onclick="closeMenu()"></div>
+
+<!-- HEADER -->
 <header>
     <img src="logo_CETI.jpeg" alt="Logo do CETI">
     <h1>CETI Professora Maria de Castro Ribeiro</h1>
 </header>
 
-<!-- Menu lateral -->
+<!-- MENU LATERAL OVERLAY -->
 <nav>
-    <a href="cardapio.html" onclick="toggleMenu()">🍽️ Cardápio</a>
-    <a href="cursos.html" onclick="toggleMenu()">📘 Cursos</a>
-    <a href="eventos.html" onclick="toggleMenu()">🎉 Eventos</a>
+    <a href="cardapio.html" onclick="closeMenu()">🍽️ Cardápio</a>
+    <a href="cursos.html" onclick="closeMenu()">📘 Cursos</a>
+    <a href="eventos.html" onclick="closeMenu()">🎉 Eventos</a>
 </nav>
 
 <section>
 
 <div class="card">
-    <h2>Bem vindo ao CETI Professora Maria de Castro Ribeiro</h2>
-
+    <h2>Bem-vindo ao CETI Professora Maria de Castro Ribeiro</h2>
     <p>
         O CETI Professora Maria de Castro Ribeiro é uma instituição de ensino comprometida 
-        com a formação integral dos estudantes, promovendo educação de qualidade, 
-        desenvolvimento humano, práticas inovadoras e participação ativa da comunidade. 
-        Surgiu com a missão de transformar vidas por meio do conhecimento e hoje é referência 
-        regional em excelência pedagógica e participação estudantil.
+        com a formação integral dos estudantes, promovendo educação de qualidade e práticas 
+        inovadoras, com forte participação da comunidade escolar.
     </p>
 </div>
 
-<!-- 3 botões principais -->
+<!-- BOTÕES PRINCIPAIS -->
 <div class="menu-principal">
 
     <a class="menu-link" href="cursos.html">📘 Cursos Ofertados</a>
-
     <a class="menu-link" href="cardapio.html">🍽️ Cardápio Alimentar</a>
-
     <a class="menu-link" href="eventos.html">🎉 Eventos da Escola</a>
 
 </div>
